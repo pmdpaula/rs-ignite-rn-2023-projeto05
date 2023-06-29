@@ -1,6 +1,7 @@
 import { ConfirmButton } from "../../components/ConfirmButton";
 import { Loading } from "../../components/Loading";
 import { OutlineButton } from "../../components/OutlineButton";
+import { OverlayFeedback } from "../../components/OverlayFeedback";
 import { ProgressBar } from "../../components/ProgressBar";
 import { Question } from "../../components/Question";
 import { QuizHeader } from "../../components/QuizHeader";
@@ -22,6 +23,7 @@ import Animated, {
   withSequence,
   withTiming,
   runOnJS,
+  set,
 } from "react-native-reanimated";
 
 interface Params {
@@ -41,6 +43,7 @@ export function Quiz() {
   const [alternativeSelected, setAlternativeSelected] = useState<null | number>(
     null
   );
+  const [statusReplay, setStatusReplay] = useState(0);
 
   const shake = useSharedValue(0);
   const scrollY = useSharedValue(0);
@@ -87,8 +90,11 @@ export function Quiz() {
     }
 
     if (quiz.questions[currentQuestion].correct === alternativeSelected) {
+      setStatusReplay(1);
       setPoints((prevState) => prevState + 1);
+      handleNextQuestion();
     } else {
+      setStatusReplay(2);
       shakeAnimation();
     }
 
@@ -111,10 +117,22 @@ export function Quiz() {
     return true;
   }
 
+  function resetStatusReplay() {
+    setStatusReplay(0);
+  }
+
   function shakeAnimation() {
+    // await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
+
     shake.value = withSequence(
       withTiming(3, { duration: 400, easing: Easing.bounce }),
-      withTiming(0)
+      withTiming(0, undefined, (finished) => {
+        "worklet";
+        if (finished) {
+          runOnJS(handleNextQuestion)();
+          runOnJS(resetStatusReplay)();
+        }
+      })
     );
   }
 
@@ -216,6 +234,8 @@ export function Quiz() {
 
   return (
     <View style={styles.container}>
+      <OverlayFeedback status={statusReplay} />
+
       <Animated.View style={fixedProgressBarStyles}>
         <Text style={styles.title}>{quiz.title}</Text>
 
