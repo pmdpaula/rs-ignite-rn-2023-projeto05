@@ -52,6 +52,9 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 ```
 
 
+[React Native Skia](https://docs.expo.dev/versions/latest/sdk/skia/)
+
+
 <!--END_SECTION:aulas-->
 
 
