@@ -37,6 +37,21 @@ E inserir no arquivo `babel.config.js` a seguinte entrada:
 `plugins: ['react-native-reanimated/plugin'],`
 
 
+
+
+[Microinterações com Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/installation)
+
+```bash
+npx expo install react-native-gesture-handler
+```
+
+
+Adicionar o seguinte import no início da aplicação (`App.tsx`)
+```javascript
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+```
+
+
 <!--END_SECTION:aulas-->
 
 
