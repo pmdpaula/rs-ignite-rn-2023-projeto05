@@ -23,6 +23,23 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 </p>
 
 
+<!--START_SECTION:aulas-->
+
+# Instalações
+
+[Biblioteca de animações - react-native-reanimated](https://docs.expo.dev/versions/latest/sdk/reanimated/)
+```bash
+npx expo install react-native-reanimated
+```
+
+E inserir no arquivo `babel.config.js` a seguinte entrada:
+
+`plugins: ['react-native-reanimated/plugin'],`
+
+
+<!--END_SECTION:aulas-->
+
+
 <!--START_SECTION:footer-->
 
 <br />
@@ -35,4 +52,7 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 </p>
 
 <!--END_SECTION:footer-->
+
+
+
 
