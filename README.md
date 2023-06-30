@@ -112,6 +112,13 @@ npx expo install expo-av
 ```
 
 
+
+[Feedback Tátil com Expo Haptics](https://docs.expo.dev/versions/latest/sdk/haptics/#installation)
+
+```bash
+npx expo install expo-haptics
+```
+
 <!--END_SECTION:aulas-->
 
 
