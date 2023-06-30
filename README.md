@@ -106,6 +106,11 @@ declare module "*.svg" {
 
 
 
+[Son com Expo AV](https://docs.expo.dev/versions/latest/sdk/av/)
+```bash
+npx expo install expo-av
+```
+
 
 <!--END_SECTION:aulas-->
 
