@@ -11,6 +11,7 @@ import { THEME } from "../../styles/theme";
 import { styles } from "./styles";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Audio } from "expo-av";
+import * as Haptics from "expo-haptics";
 import { useEffect, useState } from "react";
 import { Alert, Text, View } from "react-native";
 import { GestureDetector, Gesture } from "react-native-gesture-handler";
@@ -137,8 +138,8 @@ export function Quiz() {
     setStatusReplay(0);
   }
 
-  function shakeAnimation() {
-    // await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
+  async function shakeAnimation() {
+    await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
 
     shake.value = withSequence(
       withTiming(3, { duration: 400, easing: Easing.bounce }),
